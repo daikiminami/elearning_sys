@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   delete '/log_out', to: 'sessions#destroy'
   resources :users
   resources :sessions
+  
+  #namespaceで分けている
+  namespace :admin do 
+    resources :users
+  end
 end

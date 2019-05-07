@@ -20,10 +20,13 @@
                     <li class="nav-item dropdown">
                     <%= link_to current_user.name, "/", class:"nav-link dropdown-toggle",role:"button",:data=>{:toggle=>"dropdown"} ,:aria=>{:haspopup=>"true"} ,:aria=>{:expanded=>"false"}%>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <%= link_to current_user.name, "/", class:"dropdown-item"%>
+                        <%= link_to current_user.name, current_user, class:"dropdown-item"%>
                         <%= link_to "profile", "/", class:"dropdown-item"%>
-                        <%= link_to "Setting", "/", class:"dropdown-item"%>
+                        <%= link_to "Setting", edit_user_path(current_user), class:"dropdown-item"%>
                         <%= link_to "Logout", log_out_path, method: :delete, class:"dropdown-item"%>
+                    <% if current_user.admin == true %>
+                        <%= link_to "Admin System", admin_users_path, class:"dropdown-item"%>
+                    <%end%>
                     </div>
                 <% else %>
                     <li class="nav-item active">

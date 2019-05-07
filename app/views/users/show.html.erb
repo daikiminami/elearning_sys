@@ -1,1 +1,10 @@
-<h1>showpage</h1>
+<div class="container">
+    <div class="raw">
+        <div class="col-4">
+        <h1>user.show</h1>
+            <p class="gravatar"><%= gravatar_for(@user) %></p>
+            <p><h1><%= @user.name %></h1></p>
+            <p><%= @user.email %></p>
+        </div>
+    </div>
+</div>
