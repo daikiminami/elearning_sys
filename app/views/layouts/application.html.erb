@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ElearningSys</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>ElearningSys</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= render "layouts/header"%>
-      <%= yield %>
-    <%= render "layouts/footer"%>
-  </body>
-  
+    <body>
+        <%= render "layouts/header"%>
+
+    <% if flash.any? %>
+        <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type %>">
+            <div><%= msg %></div>
+        </div>
+        <% end %>
+    <% end %>  
+
+        <%= yield %>
+        <%= render "layouts/footer"%>
+    </body>
+    
 </html>

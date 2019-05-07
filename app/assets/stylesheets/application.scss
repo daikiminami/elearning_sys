@@ -5,9 +5,9 @@
     height: 720px;
     background-size: cover;
     position: relative;
-  }
+}
 
-  .main_container:before {
+.main_container:before {
     content: '';
     position: absolute;
     top: 0;
@@ -15,13 +15,18 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-  }
+}
 
-  .bg_inner {
+.bg_inner {
     color: aliceblue;
     text-align: center;
     position: absolute;
     width: 100%;
     top:200px;
     right: 150px;
-  }
+}
+
+.alert{
+  margin-bottom: 0px;
+}
+
