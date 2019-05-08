@@ -19,6 +19,12 @@
             <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
         <div class="action form-group">
+            <p>
+            <label>My Avatar</label>
+            <%= f.file_field :avatar ,accept: "image/jpg, image/gif, image/png"%>
+            </p>
+        </div>
+        <div class="action form-group">
             <%= f.submit btn_msg, class: "btn btn-primary btn-block" %>
         </div>
     <% end %>
