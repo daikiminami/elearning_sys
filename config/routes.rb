@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   post '/sign_up', to: 'users#create'
   get '/log_in', to: 'sessions#new'
   delete '/log_out', to: 'sessions#destroy'
+  get '/categories', to: 'categories#index'
   resources :users
   resources :sessions
   
   #namespaceで分けている
   namespace :admin do 
     resources :users
+    resources :categories
   end
 end
