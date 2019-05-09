@@ -2,9 +2,9 @@
     <div class="raw">
         <div class="col-4">
             <p><h2><%= @user.name %></h2></p>
-        <% if @user.avatar? %>
-            <p class="rounded-circle" ><%= image_tag @user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
-        <% end %>
+            <% if @user.avatar? %>
+                <p class="rounded-circle" ><%= image_tag @user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
+            <% end %>
             <p><%= @user.email %></p>
         </div>
     </div>

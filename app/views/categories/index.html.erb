@@ -1,0 +1,16 @@
+<h1>Categoies</h1>
+<div class="container">
+    <div class="row">
+        <% @categories.each do |category| %>
+        <div class="col-4">
+            <div class="card border-info my-3 mx-auto" style="max-width: 23rem;">
+                <div class="card-header">title:<%= category.title %></div>
+                <div class="card-body text-info">
+                    <h5 class="card-title">description:<%= category.description %></h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

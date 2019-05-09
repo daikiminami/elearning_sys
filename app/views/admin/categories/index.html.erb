@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Lessons Category</h1>
+    <div class="row">
+        <h4 class="col-10">Admin|Categories</h4>
+        <p class="col-1 addcategory_btn"><%= link_to"ADDCATEGORY", new_admin_category_path, class:"btn btn-success"%></p>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th width="250">Title</th>
+            <th width="450">Description</th>
+            <th width="200">Word</th>
+            <th width="100">Action</th>
+            <th width="100"></th>
+            <th colspan=2></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @categories.each do |category| %>
+            <tr>
+                <td width="250"><%= category.title %></td>
+                <td width="450"><%= category.description %></td>
+                <td width="200">words.count</td>
+                <td width="100"><%= link_to "edit", edit_admin_category_path(category), class:"btn btn-outline-primary" %></td>
+                <td width="100"><%= link_to "delete", "#", class:"btn btn-outline-danger" %></td>
+                <td colspan=2></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+</div>
