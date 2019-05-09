@@ -23,7 +23,7 @@
                 <td width="450"><%= category.description %></td>
                 <td width="200">words.count</td>
                 <td width="100"><%= link_to "edit", edit_admin_category_path(category), class:"btn btn-outline-primary" %></td>
-                <td width="100"><%= link_to "delete", "#", class:"btn btn-outline-danger" %></td>
+                <td width="100"><%= link_to "delete", admin_category_path(category), method: :delete, class:"btn btn-outline-danger" %></td>
                 <td colspan=2></td>
             </tr>
             <% end %>
