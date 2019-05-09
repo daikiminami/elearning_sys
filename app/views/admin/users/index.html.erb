@@ -13,8 +13,7 @@
                 <tbody>
                     <% @users.each do |user| %>
                         <tr>
-                            <% if user==current_user %>
-                            <% else %>
+                            <% unless user==current_user %>
                                 <td width="250"><%= user.name %></td>
                                 <td width="250"><%= user.email %></td>
                                 <% if user.admin == true %>
