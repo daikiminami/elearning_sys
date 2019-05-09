@@ -2,20 +2,7 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
         <h1>Add Category</h1>
-        <%= form_with model: [:admin, @category], local: true do |f|%>
-            <div class="form-group">
-                <%= f.label :title %><br>
-                <%= f.text_field :title, class: "form-control"%>
-            </div>
-            <div class="form-group">
-                <%= f.label :description%><br>
-                <%= f.text_field :description, class: "form-control"%>
-            </div>
-            <div class="action form-group">
-                <%= f.submit "save category", class: "btn btn-primary btn-block" %>
-            </div>
-            <% end %>
-            </div>
+        <%= render "form" ,btn_msg:"Create Category"%>
         </div>
     </div>
 </div>

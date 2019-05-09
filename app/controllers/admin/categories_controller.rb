@@ -31,9 +31,7 @@ class Admin::CategoriesController < ApplicationController
       flash[:danger] = "Not create"
     end
   end
-
-
-
+  
   private
   def category_params
     params.require(:category).permit(:title, :description)

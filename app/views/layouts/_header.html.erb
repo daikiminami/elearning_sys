@@ -24,10 +24,10 @@
                         <%#= link_to "profile", "/", class:"dropdown-item"%>
                         <%= link_to "Setting", edit_user_path(current_user), class:"dropdown-item"%>
                         <%= link_to "Logout", log_out_path, method: :delete, class:"dropdown-item"%>
-                    <% if current_user.admin == true %>
-                        <%= link_to "Admin System", admin_users_path, class:"dropdown-item"%>
-                        <%= link_to "Learning Edit", admin_categories_path, class:"dropdown-item"%>
-                    <%end%>
+                        <% if current_user.admin == true %>
+                            <%= link_to "Admin System", admin_users_path, class:"dropdown-item"%>
+                            <%= link_to "Learning Edit", admin_categories_path, class:"dropdown-item"%>
+                        <%end%>
                     </div>
                 <% else %>
                     <li class="nav-item active">
