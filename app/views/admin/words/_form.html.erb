@@ -1,0 +1,21 @@
+<%= form_with model: [:admin,:category, @word], local: true do |f|%>
+<%= render 'shared/error_messages', object: f.object %>
+    
+    <div class="form-group">
+        <%= f.label :content,"word" %><br>
+        <%= f.text_field :content, class: "form-control"%>
+    </div>
+    <%= f.fields_for :choices do |i| %>
+        <div class="form-choice form-check">
+            <div class="form-inline">
+                <%= i.label :content, "choice" %><br>
+                <%= i.text_field :content %>
+                <%= i.label :correct, class:"form-check-label" %>
+                <%= i.check_box :correct %>
+            </div>
+        </div>
+    <% end %>
+    <div class="action form-group">
+        <%= f.submit "create category", class: "btn btn-primary btn-block" %>
+    </div>
+<% end %>
