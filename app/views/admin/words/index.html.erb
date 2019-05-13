@@ -7,28 +7,28 @@
     </div>
     <div class="row">
         <table class="table table-striped">
-        <thead>
-            <tr>
-            <th width="200"></th>
-            <th width="250">Title</th>
-            <th width="300">Answer</th>
-            <th width="100">Action</th>
-            <th width="100"></th>
-            <th colspan=2></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @words.each do |word| %>
-            <tr>
-                <td width="200"></td>
-                <td width="250"><%= word.content %></td>
-                <td width="300"><%= word.choices.find_by(correct: true).content%></td>
-                <td width="100"><%= link_to "edit", edit_admin_category_word_path(word.category, word), class:"btn btn-outline-primary" %></td>
-                <td width="100"><%= link_to "delete", admin_category_word_path(word.category,word), method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %></td>
-                <td colspan=2></td>
-            </tr>
-            <% end %>
-        </tbody>
+            <thead>
+                <tr>
+                <th width="200"></th>
+                <th width="250">Title</th>
+                <th width="300">Answer</th>
+                <th width="100">Action</th>
+                <th width="100"></th>
+                <th colspan=2></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @words.each do |word| %>
+                <tr>
+                    <td width="200"></td>
+                    <td width="250"><%= word.content %></td>
+                    <td width="300"><%= word.choices.find_by(correct: true).content%></td>
+                    <td width="100"><%= link_to "edit", edit_admin_category_word_path(word.category, word), class:"btn btn-outline-primary" %></td>
+                    <td width="100"><%= link_to "delete", admin_category_word_path(word.category,word), method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %></td>
+                    <td colspan=2></td>
+                </tr>
+                <% end %>
+            </tbody>
         </table>
     </div>
 </div>

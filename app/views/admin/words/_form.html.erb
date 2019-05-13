@@ -1,21 +1,23 @@
 <%= form_with model: [:admin,:category, @word], local: true do |f|%>
-<%= render 'shared/error_messages', object: f.object %>
-    
-    <div class="form-group">
-        <%= f.label :content,"word" %><br>
-        <%= f.text_field :content, class: "form-control"%>
-    </div>
-    <%= f.fields_for :choices do |i| %>
-        <div class="form-choice form-check">
-            <div class="form-inline">
-                <%= i.label :content, "choice" %><br>
-                <%= i.text_field :content %>
-                <%= i.label :correct, class:"form-check-label" %>
-                <%= i.check_box :correct %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="row">
+        <div class="col-lg-7 offset-lg-4">
+            <div class="form-group ml-3">
+                <%= f.label :content,"word" %><br>
+                <%= f.text_field :content, class: "form-control"%>
             </div>
+            <%= f.fields_for :choices do |i| %>
+                <div class="form-choice form-check my-3">
+                    <%= i.label :content, "choice" %><br>
+                    <%= i.text_field :content %>
+                    <%= i.label :correct, class:"form-check-label" %>
+                    <%= i.check_box :correct %>
+                </div>
+            <% end %>
         </div>
-    <% end %>
-    <div class="action form-group">
-        <%= f.submit "create category", class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="action form-group offset-lg-5">
+        <%= f.submit "create category", class: "btn btn-primary" %>
     </div>
 <% end %>
+

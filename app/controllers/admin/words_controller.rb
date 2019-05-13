@@ -23,7 +23,7 @@ class Admin::WordsController < ApplicationController
       flash[:success] = "Word updated"
       redirect_to admin_category_words_path
     else
-    render 'new'
+      render 'new'
     end
   end
 
@@ -43,8 +43,6 @@ class Admin::WordsController < ApplicationController
     flash[:success] = "Word deleted"
     redirect_to request.referrer || root_url
   end
-
-
  
   private
 
