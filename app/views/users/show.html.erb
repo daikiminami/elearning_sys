@@ -4,10 +4,25 @@
             <p><h2><%= @user.name %></h2></p>
                 <p class="rounded-circle" ><%= image_tag @user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
             <p><%= @user.email %></p>
-                <div class="col-6 offset-3"><%= link_to @user.active_relationships.count,following_user_path(@user)%></div>
-                <div class="col-6 offset-3">following</div>
-                <div class="col-6 offset-3"><%= link_to @user.passive_relationships.count,followers_user_path(@user)%></div>
-                <div class="col-6 offset-3">followers</div>
+                <% if current_user.relationship(@user) %>  
+                    <%= button_to "Unfollow", relationship_path(current_user.relationship(@user)),
+                    class:"btn btn-sm btn-danger",
+                    method: :delete %>
+                <% else %>
+                    <%= button_to "Follow", relationships_path, 
+                    params: { followed_id: user.id }, 
+                    class:"btn btn-sm btn-success" %>
+                <% end %>
+                <hr>
+                <div class="row">
+                    <div class="col-6"><strong><%= link_to @user.active_relationships.count,following_user_path(@user)%></strong>
+                        <div>following</div>
+                    </div>
+                    <div class="col-6"><strong><%= link_to @user.passive_relationships.count,followers_user_path(@user)%></strong>
+                        <div>follower</div>
+                    </div>
+                </div>
+                <hr>
             </div>
         </div>
     </div>
