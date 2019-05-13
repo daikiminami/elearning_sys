@@ -10,7 +10,7 @@
                     method: :delete %>
                 <% else %>
                     <%= button_to "Follow", relationships_path, 
-                    params: { followed_id: user.id }, 
+                    params: { followed_id: @user.id }, 
                     class:"btn btn-sm btn-success" %>
                 <% end %>
                 <hr>
