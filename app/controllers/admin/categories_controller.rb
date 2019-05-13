@@ -24,11 +24,11 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category=Category.new(category_params)
     if @category.save
-      redirect_to  admin_categories_path
       flash[:success] = "Category create"
+      redirect_to  admin_categories_path
     else
-      render_to new_admin_category_path
       flash[:danger] = "Not create"
+      render  'new'
     end
   end
 

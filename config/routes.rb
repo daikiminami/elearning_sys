@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'words/new'
+    get 'words/edit'
+  end
   get 'sessions/new'
   root 'static_pages#home'
   get  '/sign_up', to: 'users#new'
@@ -12,6 +16,8 @@ Rails.application.routes.draw do
   #namespaceで分けている
   namespace :admin do 
     resources :users
-    resources :categories
+    resources :categories do
+      resources :words
+    end
   end
 end

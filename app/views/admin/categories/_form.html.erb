@@ -1,4 +1,6 @@
 <%= form_with model: [:admin, @category], local: true do |f|%>
+    <%= render 'shared/error_messages', object: f.object %>
+    
     <div class="form-group">
         <%= f.label :title %><br>
         <%= f.text_field :title, class: "form-control"%>

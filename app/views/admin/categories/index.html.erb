@@ -19,12 +19,13 @@
         <tbody>
             <% @categories.each do |category| %>
             <tr>
-                <td width="250"><%= category.title %></td>
+                <td width="250"><%= link_to category.title, admin_category_words_path(category) %></td>
                 <td width="450"><%= category.description %></td>
-                <td width="200">words.count</td>
-                <td width="100"><%= link_to "edit", edit_admin_category_path(category), class:"btn btn-outline-primary" %></td>
-                <td width="100"><%= link_to "delete", admin_category_path(category), method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %></td>
-                <td colspan=2></td>
+                <td width="200"><%= category.words.count%> </td>
+                <td width="50"><%= link_to "AddWord", admin_category_words_path(category), class:"btn btn-outline-success" %></td>
+                <td width="50"><%= link_to "WordEdit", edit_admin_category_path(category), class:"btn btn-outline-primary" %></td>
+                <td width="50"><%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %></td>
+                <td colspan=3></td>
             </tr>
             <% end %>
         </tbody>
