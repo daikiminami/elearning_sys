@@ -8,20 +8,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <% if logged_in? %>
-                    <%# <li class="nav-item active"> %>
+                    <li class="nav-item active">
                         <%#=link_to"Dashboad","/",class:"nav-link" %>
-                    <%# </li> %>
+                    </li>
                     <li class="nav-item">
                         <%=link_to"Categories", categories_path,class:"nav-link" %>
                     </li>
                     <li class="nav-item">
-                        <%=link_to"Members","/",class:"nav-link" %>
+                        <%=link_to"Members",users_path,class:"nav-link" %>
                     </li>
                     <li class="nav-item dropdown">
                     <%= link_to current_user.name, "/", class:"nav-link dropdown-toggle",role:"button",:data=>{:toggle=>"dropdown"} ,:aria=>{:haspopup=>"true"} ,:aria=>{:expanded=>"false"}%>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <%= link_to current_user.name, current_user, class:"dropdown-item"%>
-                        <%#= link_to "profile", "/", class:"dropdown-item"%>
+                        <%= link_to "profile", current_user, class:"dropdown-item"%>
                         <%= link_to "Setting", edit_user_path(current_user), class:"dropdown-item"%>
                         <%= link_to "Logout", log_out_path, method: :delete, class:"dropdown-item"%>
                         <% if current_user.admin == true %>

@@ -1,0 +1,27 @@
+<div class="container p-3">
+    <h2 class="text-center">Users</h2>
+    <div>
+        <%= will_paginate %>
+    </div>
+    <div class="row">
+        <% @users.each do |user| %>
+            <div class="col-sm-3 offset-lg-1 border text-center py-2 my-2">
+                <p class="rounded-circle" ><%= image_tag user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
+                <h4 class="my-1"><%= link_to user.name, user %></h4>
+                <p><%= user.email%></p>
+                <% if current_user.relationship(user) %>  
+                    <%= button_to "Unfollow", relationship_path(current_user.relationship(user)),
+                    class:"btn btn-sm btn-danger",
+                    method: :delete %>
+                <% else %>
+                    <%= button_to "Follow", relationships_path, 
+                    params: { followed_id: user.id }, 
+                    class:"btn btn-sm btn-success" %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div>
+        <%= will_paginate %>
+    </div>
+</div>

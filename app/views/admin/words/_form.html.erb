@@ -1,7 +1,7 @@
 <%= form_with model: [:admin,:category, @word], local: true do |f|%>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="row">
-        <div class="col-lg-7 offset-lg-4">
+        <div class="col-lg-7 offset-lg-4 word_form">
             <div class="form-group ml-3">
                 <%= f.label :content,"word" %><br>
                 <%= f.text_field :content, class: "form-control"%>

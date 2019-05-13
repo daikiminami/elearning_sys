@@ -1,0 +1,15 @@
+<div class="container p-3">
+    <h1>Follower Users</h1>
+    <div class="row">
+        <%  @users.each do |user|%>
+             <div class="col-sm-5 offset-lg-1">
+                <div class="media mb-3">    
+                    <p class="rounded-circle" ><%= image_tag user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
+                    <h4><%= link_to user.name, user %></h4>
+                </div>
+            </div>
+        <% end %> 
+   </div>
+    <%= will_paginate @users,　class: "pagination justify-content-center"%>
+</div>
+    

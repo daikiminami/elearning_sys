@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     get 'words/new'
     get 'words/edit'
   end
+
   get 'sessions/new'
   root 'static_pages#home'
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   get  '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
   get '/log_in', to: 'sessions#new'
@@ -12,7 +21,8 @@ Rails.application.routes.draw do
   get '/categories', to: 'categories#index'
   resources :users
   resources :sessions
-  
+  resources :relationships, only: [:create, :destroy]
+
   #namespaceで分けている
   namespace :admin do 
     resources :users
@@ -20,4 +30,5 @@ Rails.application.routes.draw do
       resources :words
     end
   end
+
 end
