@@ -8,6 +8,7 @@
                 <div class="card-body text-info">
                     <h5 class="card-title">description:<%= category.description %></h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p><%= link_to 'Learn', lessons_path(category_id: category.id), method: :post%></p>
                 </div>
             </div>
         </div>

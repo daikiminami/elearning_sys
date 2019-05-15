@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   before_save { email.downcase! }
 
+  has_many :categories, through: :lessons
+  has_many :lessons
+
   validates :name, presence: true, length: {maximum: 50 }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

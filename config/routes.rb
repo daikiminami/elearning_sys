@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'lessons/create'
+  get 'lessons/show'
   namespace :admin do
     get 'words/new'
     get 'words/edit'
@@ -19,6 +21,11 @@ Rails.application.routes.draw do
   get '/log_in', to: 'sessions#new'
   delete '/log_out', to: 'sessions#destroy'
   get '/categories', to: 'categories#index'
+  post '/lessons', to: 'lessons#create'
+  resources :answers
+  resources :lessons do
+    resources :answers
+  end
   resources :users
   resources :sessions
   resources :relationships, only: [:create, :destroy]
