@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-center">
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-sm-9">
+                    <strong><%= @lesson.category.title%></strong>
+                </div>
+                <div class="col-sm-3 text-right">
+                    <h3 class="text-muted"><span class="text-warning"><%= 1+@lesson.words.count %></span><a>of</a><%= @lesson.category.words.count%></h3>
+                </div>
+            </div>
+            <div class="card p-3 col-sm-9 offset-lg-3">
+                <h2 class="text-warning text-center"><%= @words.first.content %></h2>
+                <div class="choices">
+                    <% @words.first.choices.each do |choice| %>
+                        <div class="mt-3">
+                            <%= button_to choice.content, lesson_answers_path(@lesson, params:{answer: {choice_id: choice.id, word_id: choice.word.id}}), method: :post, class:"btn btn-info btn-lg btn-block" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
