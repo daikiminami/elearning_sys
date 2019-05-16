@@ -7,6 +7,8 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @lesson = Lesson.find(params[:id])
+    @answers = Answer.where(lesson_id: params[:id])
   end
-
+ 
 end

@@ -1,2 +1,32 @@
-<h1>Lessons#show</h1>
-<p>Find me in app/views/lessons/show.html.erb</p>
+<div class="container">
+    <h1>Result</h1>
+    <div class="row">
+        <div class="col-sm-3 text-right">
+            <h3 class="text-muted"><span class="text-warning"><%= @lesson.result %></span><a>of</a><%= @lesson.category.words.count %></h3>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th width="200"></th>
+                <th width="250">Word</th>
+                <th width="300">Your Answer</th>
+                <th width="100">Answer</th>
+                <th width="100"></th>
+                <th colspan=2></th>
+                </tr>
+            </thead>
+            <tbody>
+               <% @answers.each do |answer|%>
+                <tr>
+                    <td width="200"></td>
+                    <td width="250"><%= answer.word.content%></td>
+                    <td width="300"><%= answer.choice.content%></td>
+                    <td width="100"><%= answer.word.content%></td>
+                    <td width="100"></td>
+                    <td colspan=2></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

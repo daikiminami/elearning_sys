@@ -1,2 +1,2 @@
-module LessonsHelper
+module LessonsHelper    
 end

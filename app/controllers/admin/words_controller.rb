@@ -1,6 +1,7 @@
 class Admin::WordsController < ApplicationController
   def index
-    @words=Word.all
+  
+    @words=Word.where(category_id: params[:category_id])
   end
 
   def new
