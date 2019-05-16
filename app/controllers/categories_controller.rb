@@ -3,4 +3,3 @@ class CategoriesController < ApplicationController
     @categories= Category.joins(:words).group("categories.id")
   end
     
-end
