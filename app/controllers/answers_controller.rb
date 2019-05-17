@@ -3,6 +3,8 @@ class AnswersController < ApplicationController
     @lesson=Lesson.find(params[:lesson_id])
     @words=(@lesson.category.words - @lesson.words)
     if @words.empty?
+      @result_count = @lesson.choices.where(correct: "1").count
+      @lesson.update_attributes(result: @result_count)
       redirect_to lesson_path(@lesson)
     else
       @answer=@lesson.answers.build
@@ -23,8 +25,11 @@ class AnswersController < ApplicationController
   end
   
 
-  def show
-  end
+  # def update
+  #   @lesson = Lesson.find(params[:lesson_id])
+  #   result_count = @lesson.answers.choice.where(correct: "1").count
+  #   @lesson.update_attributes(:result, result_count)
+  # end
 
   private
   def answer_params
