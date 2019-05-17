@@ -4,7 +4,7 @@ module CategoriesHelper
   end
 
   def user_result(category)
-    Lesson.where(category_id: category.id)
+    Lesson.where(category_id: category.id).where.not(result: nil)
   end
   
   def lesson(category,user)
