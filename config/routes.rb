@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   root 'static_pages#home'
-
+  get 'static_pages/index'
   resources :users do
     member do
       get :following, :followers
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :sessions
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships 
 
   #namespaceで分けている
   namespace :admin do 

@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-4 text-center ml-5">
+        <p class="mt-5 mb-4"><h2><%=current_user.name %></h2></p>
+            <p class="rounded-circle" ><%= image_tag current_user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
+        <p class="my-3"><%= current_user.email %></p>
+        <hr>
+        <div class="row">
+            <div class="col-6"><strong><%= link_to current_user.active_relationships.count,following_user_path(current_user)%></strong>
+                <div>following</div>
+            </div>
+            <div class="col-6"><strong><%= link_to current_user.passive_relationships.count,followers_user_path(current_user)%></strong>
+                <div>follower</div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="col-6 ml-3">
+        <h1 class="text-center">Activity</h1>
+        <hr class="mb-1">
+        <div class="">
+            <% @activities.each do |activity|%>
+                <% if activity.action.instance_of?(Lesson) %>
+                    <div class="media pl-5">
+                        <% if activity.user.id==current_user.id%>
+                            <p><%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to "You", user_path(current_user.id),class:"text-secondary" %>  learned  <%= activity.action.result %>of<%= activity.action.category.words.count%><span class="badge badge-info"><%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%></span></p>
+                        <% else %>
+                            <p><%= image_tag activity.action.user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to activity.action.user.name,user_path(activity.action.user.id), class:"text-secondary" %> learned  <%= activity.action.result %>of<%= activity.action.category.words.count%><span class="badge badge-info"><%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%></span></p>
+                        <% end %>
+                    </div>
+                <% else %>
+                    <div class="media pl-5">    
+                        <% if activity.user.id==current_user.id%>
+                            <p><%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to "You", user_path(current_user.id),class:"text-secondary" %> followed  <span class="badge badge-success"><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                        <% else %>
+                            <p><%= image_tag activity.user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to activity.action.follower.name,user_path(activity.action.follower.id), class:"text-secondary" %> followed <span class="badge badge-success"%><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                        <% end %>
+                    </div>
+                <% end %> 
+            <% end %> 
+        </div>
+    </div>
+</div>
+
+
