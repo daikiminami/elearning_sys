@@ -20,23 +20,62 @@
         <div class="">
             <% @activities.each do |activity|%>
                 <% if activity.action.instance_of?(Lesson) %>
-                    <div class="media pl-5">
+                    <div class="media pl-5 pb-1">
                         <% if activity.user.id==current_user.id%>
-                            <p><%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to "You", user_path(current_user.id),class:"text-secondary" %>  learned  <%= activity.action.result %>of<%= activity.action.category.words.count%><span class="badge badge-info"><%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%></span></p>
+                            <div class="media py-1">
+                                <%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %>
+                                <div class="media-body mb-2">
+                                    <p class="mt-1 mb-0">
+                                        <%= link_to "You", user_path(current_user.id),class:"text-secondary" %> learned <%= activity.action.result %> of <%= activity.action.category.words.count%>
+                                        <span class="badge badge-info">
+                                            <%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%>
+                                        </span>
+                                    </p>
+                                    <small class="text-secondary"><%= time_ago_in_words activity.created_at %>  ago</small>
+                                </div>
+                            </div>
                         <% else %>
-                            <p><%= image_tag activity.action.user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to activity.action.user.name,user_path(activity.action.user.id), class:"text-secondary" %> learned  <%= activity.action.result %>of<%= activity.action.category.words.count%><span class="badge badge-info"><%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%></span></p>
+                            <div class="media py-1">
+                                <%= image_tag activity.action.user.avatar.url , size:"70x70", class: "mx-2 rounded" %>
+                                <div class="media-body mb-2">
+                                    <p class="mt-1 mb-0">
+                                        <%= link_to activity.action.user.name,user_path(activity.action.user.id), class:"text-secondary" %> learned <%= activity.action.result %> of <%= activity.action.category.words.count%>
+                                        <span class="badge badge-info">
+                                            <%= link_to activity.action.category.title ,lesson_path(activity.action.id), class: "text-white"%>
+                                        </span>
+                                    </p>
+                                    <small class="text-secondary"><%= time_ago_in_words activity.created_at %>  ago</small>
+                                </div>
+                            </div>
                         <% end %>
                     </div>
                 <% else %>
                     <div class="media pl-5">    
                         <% if activity.user.id==current_user.id%>
-                            <p><%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to "You", user_path(current_user.id),class:"text-secondary" %> followed  <span class="badge badge-success"><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                        <div class="media py-2">
+                            <%= image_tag current_user.avatar.url , size:"70x70", class: "mx-2 rounded" %>
+                            <div class="media-body mb-2">
+                                <p class="mt-1 mb-0"><%= link_to "You", user_path(current_user.id),class:"text-secondary" %> followed
+                                <span class="badge badge-success"><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                                <small class="text-secondary"><%= time_ago_in_words activity.created_at %>  ago</small>
+                            </div>
+                        </div>
                         <% else %>
-                            <p><%= image_tag activity.user.avatar.url , size:"70x70", class: "mx-2 rounded" %><%= link_to activity.action.follower.name,user_path(activity.action.follower.id), class:"text-secondary" %> followed <span class="badge badge-success"%><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                        <div class="media py-2">
+                            <%= image_tag activity.user.avatar.url , size:"70x70", class: "mx-2 rounded" %>
+                            <div class="media-body mb-2">
+                                <p class="mt-1 mb-0"><%= link_to activity.action.follower.name,user_path(activity.action.follower.id), class:"text-secondary" %> followed 
+                                <span class="badge badge-success"><%= link_to activity.action.followed.name,user_path(activity.action.followed.id), class: "text-white"%></span></p>
+                                <small class="text-secondary"><%= time_ago_in_words activity.created_at %>  ago</small>
+                            </div>
+                        </div>
                         <% end %>
                     </div>
                 <% end %> 
             <% end %> 
+            <div>
+                <%= will_paginate @activities%>
+            </div>
         </div>
     </div>
 </div>
