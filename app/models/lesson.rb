@@ -4,4 +4,7 @@ class Lesson < ApplicationRecord
   has_many :words, through: :answers
   belongs_to :user
   belongs_to :category
+  has_one :activity, as: :action, dependent: :destroy
+
+  
 end

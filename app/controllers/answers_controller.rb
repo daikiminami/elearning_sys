@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
     if @words.empty?
       @result_count = @lesson.choices.where(correct: "1").count
       @lesson.update_attributes(result: @result_count)
+      @lesson.create_activity(user: current_user)
       redirect_to lesson_path(@lesson)
     else
       @answer=@lesson.answers.build

@@ -7,8 +7,8 @@
                     <div class="card-header"><%= category.title %></div>
                     <div class="card-body text-info">
                         <p class="card-text"><%= category.description %></p>
-                        <% if lesson(category, current_user) && lesson(category, current_user).result %>
-                            <p><%= link_to 'Show result', lesson_path(checklearn(category)), class:"btn btn-info btn-lg"%></p>
+                        <% if lesson(category, current_user) && lesson(category, current_user).result%>
+                            <p><%= link_to 'Show result', lesson_path(lesson(category, current_user)), class:"btn btn-info btn-lg"%></p>
                         <% else %>
                             <p><%= link_to 'Learn', lessons_path(category_id: category.id), method: :post, class:"btn btn-info btn-lg"%></p>
                         <% end %>
