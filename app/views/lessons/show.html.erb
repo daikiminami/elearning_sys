@@ -21,7 +21,7 @@
                     <td width="200"></td>
                     <td width="250"><%= answer.word.content%></td>
                     <td width="300"><%= answer.choice.content%></td>
-                    <td width="100"><%= answer.word.content%></td>
+                    <td width="100"><%= answer.word.choices.find_by(correct: true).content%></td>
                     <td width="100"></td>
                     <td colspan=2></td>
                 </tr>

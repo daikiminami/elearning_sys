@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-4 text-center ml-5">
+        <p class="mt-5 mb-4"><h2><%=current_user.name %></h2></p>
+            <p class="rounded-circle" ><%= image_tag current_user.avatar.url , size:"150x150" ,class:"rounded-circle" %></p>
+        <p class="my-3"><%= current_user.email %></p>
+        <div class="row">
+            <p class="col-lg-3 offset-lg-3 px-0"><%= link_to 'View profile', user_path(current_user), class:"btn btn-success"%></p>
+            <p class="col-lg-3 px-0"><%= link_to 'Update profile', edit_user_path(current_user), class:"btn btn-danger"%></p>
+        </div>
+    </div>
+    <div class="col-6 ml-3">
+        <h1 class="text-center mb-4">Learned Result</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th width="200"></th>
+                <th width="250">Word</th>
+                <th width="300">Your Answer</th>
+                <th width="100">Answer</th>
+                <th width="100"></th>
+                <th colspan=2></th>
+                <th width="100"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @answers.each do |answer|%>
+                    <tr>
+                    <td width="200"></td>
+                    <td width="250"><%= answer.word.content%></td>
+                    <td width="300"><%= answer.choice.content%></td>
+                    <td width="100"><%= answer.word.choices.find_by(correct: true).content%></td>
+                    <td width="100"></td>
+                    <td colspan=2></td>
+                    <% if correct_answer(answer) %> 
+                        <td width="100">o</td>
+                    <% else %>
+                        <td width="100">x</td>   
+                    <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
