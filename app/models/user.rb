@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :categories, through: :lessons
   has_many :lessons
   has_many :activities
+  has_many :answers, through: :lessons
   validates :name, presence: true, length: {maximum: 50 }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'words/new'
     get 'words/edit'
   end
+  get 'words/index'
 
   get 'sessions/new'
   root 'static_pages#home'

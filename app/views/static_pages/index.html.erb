@@ -13,6 +13,8 @@
             </div>
         </div>
         <hr>
+        <p>You learned <%= pluralize(current_user.answers.count,"word")%></p>
+        <p><%= link_to"Words Learned", words_index_path, class:"btn btn-success"%></p>
     </div>
     <div class="col-6 ml-3">
         <h1 class="text-center">Activity</h1>
