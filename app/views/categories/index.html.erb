@@ -1,5 +1,12 @@
 <h1>Categories</h1>
 <div class="container">
+    <div class="row">   
+        <ul class="nav nav-pills nav-warning offset-lg-9">
+            <li><%= link_to "All",categories_path ,class: "btn btn-primary mr-1"%></li>
+            <li><%= link_to "Learned",categories_path(status: :learned),class: "btn btn-primary mr-1" %></li>
+            <li><%= link_to "not Learn",categories_path(status: :unlearned),class: "btn btn-primary mr-1" %></li>
+        </ul>
+    </div>
     <div class="row">
         <% @categories.each do |category| %>
             <div class="col-4">

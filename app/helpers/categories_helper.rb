@@ -11,4 +11,8 @@ module CategoriesHelper
     Lesson.find_by(category_id: category.id,user_id: user.id)
   end
 
+  def change_page
+    params[:title] 
+    params[:description]
+  end
 end
