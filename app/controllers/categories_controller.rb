@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   def index
+    @page = params[:status]
     if params[:status] == nil
       @categories = Category.joins(:words).group("categories.id")
     elsif params[:status]=='learned'
