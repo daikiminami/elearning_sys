@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   before_save { email.downcase! }
-
-  has_many :categories, through: :lessons
   has_many :lessons
+  has_many :categories, through: :lessons
   has_many :activities
   has_many :answers, through: :lessons
   validates :name, presence: true, length: {maximum: 50 }

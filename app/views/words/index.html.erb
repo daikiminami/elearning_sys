@@ -10,6 +10,15 @@
     </div>
     <div class="col-6 ml-3">
         <h1 class="text-center mb-4">Learned Result</h1>
+        <div class="nav-item dropdown">
+            <%= link_to @category_name, "/", class:"nav-link dropdown-toggle",role:"button",:data=>{:toggle=>"dropdown"} ,:aria=>{:haspopup=>"true"} ,:aria=>{:expanded=>"false"}%>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "All", words_index_path, class:"dropdown-item"%>
+                <% @categories.each do |category| %>
+                    <%= link_to category.title, words_index_path(id: category.id), class:"dropdown-item"%>
+                <% end %>
+            </div>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
