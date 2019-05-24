@@ -11,4 +11,7 @@ module CategoriesHelper
     Lesson.find_by(category_id: category.id,user_id: user.id)
   end
 
+  def current_page(param)
+    if param.eql?(@page) then return "active" end
+  end
 end
