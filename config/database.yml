@@ -11,3 +11,9 @@ development:
 test:
   <<: *default
   database: elearning_sys_test
+  production:
+   adapter: postgresql
+   datebase: e-learning-sys
+   pool: 5
+   timeout: 5000
+   
