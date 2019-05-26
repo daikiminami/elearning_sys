@@ -13,6 +13,7 @@
                 <th width="100">Answer</th>
                 <th width="100"></th>
                 <th colspan=2></th>
+                <th width="100"></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,11 @@
                     <td width="100"><%= answer.word.choices.find_by(correct: true).content%></td>
                     <td width="100"></td>
                     <td colspan=2></td>
+                    <% if correct_answer(answer) %> 
+                        <td width="100">o</td>
+                    <% else %>
+                        <td width="100">x</td>   
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
