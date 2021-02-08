@@ -43,7 +43,7 @@ gem 'jquery-rails'
 gem 'faker'
 
 gem 'font-awesome-rails'
-gem 'carrierwave', '1.2.2'
+gem 'carrierwave', '1.3.2'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 
